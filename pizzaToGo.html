@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Pizza To Go</title>
+      
+    <style type="text/css">
+	
+	body{
+		background-color: #ccdde1;
+	}
+	table{
+		border: 1px solid black;
+	  	padding: 10px;
+		background-color: #d1e9de;
+	}
+	h1, h2 {
+		text-align: center;
+	}
+	legend, #orderCost {
+		font-weight: bold;
+	}
+</style> 
+
+</head>
+<body>
+    <h1>Pizza To Go</h1>
+               
+<hr size="3" color="gray"> 
+    <form name="pizzaList" action="" method="">
+    <p> <fieldset>
+    <legend>Please select you pizza</legend>
+        <input type="checkbox" name="pizzaChoice" id="vegetarian" value="12.95"  />
+        Vegetarian ($12.95)<br />
+        <input type="checkbox" name="pizzaChoice" id="hawaiian" value="14.95"  />
+        Hawaiian ($14.95)<br />
+        <input type="checkbox" name="pizzaChoice" id="meatLovers" value="16.95" />
+        Meat Lovers ($16.95)<br />
+        <input type="checkbox" name="pizzaChoice" id="theWorks" value="18.95"  />
+        The Works ($18.95)<br />
+        <input type="checkbox" name="pizzaChoice" id="fourCheese" value="15.95" />
+        Four Cheese ($15.95)
+        </fieldset></p>
+    <p>
+    <fieldset>
+    <legend>Please select extra toppings</legend>
+		<input type="checkbox" name="toppings" id="cheese" value="2"  />Extra cheese
+		($2.00)
+		<input type="checkbox" name="toppings" id="mushrooms" value="2.5" />Mushrooms
+		($2.50)
+		<input type="checkbox" name="toppings" id="anchovies"value="3" />Anchovies
+		($3.00)
+		</fieldset>
+	</p>
+	
+	<P>
+	<fieldset>
+		<input type="reset" name="reset" value="Reset" />
+		<input type="button" name="submit" value="Submit" onclick="CalcOrderCost();"/>
+		</fieldset>
+		
+	</P>
+    <p>Order total: $<input name="pizzaPrice" id="orderCost" style="background-color: Transparent; border: none;
+            overflow: hidden" value="0" /></p>     
+        
+    </form>
+
+    <script type="text/javascript">
+    	
+    	function CalcOrderCost()
+    	{
+    		var veg = document.getElementById("vegetarian");
+			var haw = document.getElementById("hawaiian");
+			var meat = document.getElementById("meatLovers");
+			var works = document.getElementById("theWorks");
+			var cheese = document.getElementById("fourCheese");
+			
+			var pizzaChoice = 0;
+	
+			(veg.checked)?(pizzaChoice += 12.95):(pizzaChoice += 0);
+			(haw.checked)?(pizzaChoice += 14.95):(pizzaChoice += 0);
+			(meat.checked)?(pizzaChoice += 16.95):(pizzaChoice += 0);
+			(works.checked)?(pizzaChoice += 18.95):(pizzaChoice += 0);
+			(cheese.checked)?(pizzaChoice += 15.95):(pizzaChoice += 0);
+			
+			var excheese = document.getElementById("cheese");
+			var mush = document.getElementById("mushrooms");
+			var anch = document.getElementById("anchovies");
+			
+			var extra = 0;
+			
+			(excheese.checked)?(extra += 2.00):(extra += 0);
+			(mush.checked)?(extra += 2.50):(extra += 0);
+			(anch.checked)?(extra += 3.00):(extra += 0);
+			
+			var total = pizzaChoice + extra;
+			
+			document.getElementById("orderCost").value = total.toFixed(2);
+    	}
+
+    </script>
+</body>
+</html>
